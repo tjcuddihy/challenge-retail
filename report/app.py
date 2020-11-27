@@ -68,15 +68,5 @@ def display_page(pathname):
         return overview.create_layout(app)
 
 
-@app.callback(
-    Output(component_id="graph-sales-performance", component_property="figure"),
-    [Input(d, "value") for d in dimensions],
-)
-def make_figure(y, color, x="Year"):
-    df = df_sales_performance.groupby([x, color]).sum().reset_index()
-
-    return px.scatter(df, x=x, y=y, color=color, height=700,)
-
-
 if __name__ == "__main__":
     app.run_server(debug=True)
