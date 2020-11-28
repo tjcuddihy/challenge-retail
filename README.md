@@ -27,6 +27,7 @@ $ cd challenge-retail
 $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip install -r report/requirements.txt
+$ jupyter labextension install jupyterlab-plotly@4.13.0
 $ jupyter-lab
 ```
 

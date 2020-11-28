@@ -71,13 +71,13 @@ layout_quadrant = html.Div(
                             """
 The following section will first derive `Gross margin` as `Gross profit` / `Revenue` and then plot `Product type` (individual products make for a very busy graph) across multiple axes to identify 4 quadrants:
 
-1. Stars - High `Quanitity`, High `Gross margin`, High `Unit price`
+1. Stars - High `Quantity`, High `Gross margin`, High `Unit price`
     - These are the money makers.
-1. Efficiency targets - High `Quanitity`, Low `Gross margin`
+1. Efficiency targets - High `Quantity`, Low `Gross margin`
     - These product types have great volume sold, so working on gross margin can help turn them into Stars.
-1. Marketing targets - Low `Quanitity`, High `Gross margin`
+1. Marketing targets - Low `Quantity`, High `Gross margin`
     - These products have good margin but we need to up their `Quantity`; Investing some marketing spend into this category could help push them up into Star territory.
-1. Simplification targets - Low `Quanitity`, Low `Gross margin` 
+1. Simplification targets - Low `Quantity`, Low `Gross margin` 
     - These products are candidates to remove from the catalogue: Use the capital for something more effective.
 
 Our first graph is complex; Interpretation as follows:
@@ -209,7 +209,7 @@ layout_correlation = html.Div(
         ),
         dcc.Markdown(
             """
-It doesn't appear that the Camping Supply store is having lots of occurences of loss of business due to price hikes. However, they have obviously not been having large increases to their `Unit price` values so they may not yet be testing the limit of their customer's patience.
+It doesn't appear that the Camping Supply store is having lots of occurrences of loss of business due to price hikes. However, they have obviously not been having large increases to their `Unit price` values so they may not yet be testing the limit of their customer's patience.
 
 If I had more time, I'd re-do this analysis to additionally look at changes in `Unit cost`. Also, I would explore the hypothesis from a different angle: I'd plot the YoY changes for `Quantity` and `Unit cost/price` across 2 axes instead of doing correlation and OLS slope stuff. I did it the hard way here `¯\_(ツ)_/¯`
         """

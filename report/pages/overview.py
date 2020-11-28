@@ -92,7 +92,7 @@ layout_howto = html.Div(
             """
 The code to view and evaluate my report can be found [here](https://github.com/tjcuddihy/challenge-retail), feel free to jump in and explore. 
 
-Within is a `report` folder which contains a notebook, `3-hour.ipynb`. This notebook is where I performed my initial analysis of the data. Admittidly it took longer than the 3-hours but a lot of that was due to learning [Plotly](https://plotly.com/python/). From there, I spent several days learning [Dash](https://plotly.com/dash/) and built this interactive report.
+Within is a `report` folder which contains a notebook, `3-hour.ipynb`. This notebook is where I performed my initial analysis of the data. Admittedly it took longer than the 3-hours but a lot of that was due to learning [Plotly](https://plotly.com/python/). From there, I spent several days learning [Dash](https://plotly.com/dash/) and built this interactive report.
 
 If you'd like to learn more about the Dash code, it's also within that folder. You can even clone the repo and deploy your own version to Heroku (See the toplevel `README.md` for instructions).
     """
