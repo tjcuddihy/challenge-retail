@@ -11,7 +11,7 @@ from pages import overview, salesPerformance, additionalData, forecasts, recomme
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
-DATA_PATH = PATH.joinpath("../data").resolve()
+DATA_PATH = PATH.joinpath("data").resolve()
 
 
 df_sales_performance = pd.read_csv(
