@@ -25,78 +25,77 @@ def create_layout(app):
     return html.Div(
         [
             html.Div([Header(app)]),
-            # page 1
             html.Div(
-                [
-                    # Row 3
-                    html.Div(
-                        [
-                            html.Div(
-                                [
-                                    html.H5("Summary"),
-                                    html.Br([]),
-                                    html.P(
-                                        "ACME has experience consistent growth during the period 2004-2006. However, that growth has reverted , with Revenue down ~25%.",
-                                        style={"color": "#ffffff"},
-                                        className="row",
-                                    ),
-                                ],
-                                className="product",
-                            )
-                        ],
-                        className="row",
-                    ),
-                    # Row 4
-                    html.Div(
-                        [
-                            html.Div(
-                                [
-                                    html.H6(
-                                        ["Yearly Revenue (w/ YoY % change)"],
-                                        className="subtitle padded",
-                                    ),
-                                    html.Table(make_dash_table(df_yearly_revenue)),
-                                ],
-                                className="six columns",
-                            ),
-                        ],
-                        className="row",
-                        style={"margin-bottom": "35px"},
-                    ),
-                    # Row 5
-                    html.Div(
-                        [
-                            html.Div(
-                                [
-                                    html.H6(
-                                        "Yearly Revenue and Gross Profit",
-                                        className="subtitle padded",
-                                    ),
-                                    dcc.Graph(
-                                        id="graph-yearly-performance",
-                                        figure=px.bar(
-                                            df_yearly_performance,
-                                            x="Year",
-                                            y="value",
-                                            color="variable",
-                                            barmode="group",
-                                            labels={"value": "$"},
-                                            color_discrete_sequence=[
-                                                "#519872",
-                                                "#34252f",
-                                            ],
-                                        ),
-                                    ),
-                                ],
-                                className="row",
-                            ),
-                        ],
-                        className="row ",
-                    ),
-                    # Row 5
-                ],
+                [layout_intro, layout_graphs, layout_howto],
                 className="sub_page",
             ),
         ],
         className="page",
     )
+
+
+layout_intro = html.Div(
+    [
+        html.Div(
+            [
+                html.H5("Summary"),
+                html.Br([]),
+                html.P(
+                    "ACME has experienced consistent growth during the period 2004-2006. However, that growth has reverted, with Revenue down ~25%.",
+                    style={"color": "#ffffff"},
+                    className="row",
+                ),
+                html.P(
+                    "This drop has occurred across all Countries, Product Lines and Product Types. Additional data and analysis are required to uncover the cause of the drop and to develop more robust recommendations for change into 2008.",
+                    style={"color": "#ffffff"},
+                    className="row",
+                ),
+            ],
+            className="product",
+        )
+    ],
+    className="row",
+)
+
+layout_graphs = html.Div(
+    [
+        html.H5(
+            ["Yearly Revenue (w/ YoY % change)"],
+            className="subtitle padded",
+        ),
+        html.Div(
+            [
+                html.Table(make_dash_table(df_yearly_revenue)),
+            ],
+            className="row",
+        ),
+        dcc.Graph(
+            id="graph-yearly-performance",
+            figure=px.bar(
+                df_yearly_performance,
+                x="Year",
+                y="value",
+                color="variable",
+                barmode="group",
+                title="Yearly Revenue and Gross Profit",
+                labels={"value": "$"},
+            ).update_yaxes(tickprefix="$"),
+        ),
+    ],
+    className="row",
+)
+
+layout_howto = html.Div(
+    [
+        html.H5("How to read this report.", className="subtitle padded"),
+        dcc.Markdown(
+            """
+The code to view and evaluate my report can be found [here](https://github.com/tjcuddihy/challenge-retail), feel free to jump in and explore. 
+
+Within is a `report` folder which contains a notebook, `3-hour.ipynb`. This notebook is where I performed my initial analysis of the data. Admittidly it took longer than the 3-hours but a lot of that was due to learning [Plotly](https://plotly.com/python/). From there, I spent several days learning [Dash](https://plotly.com/dash/) and built this interactive report.
+
+If you'd like to learn more about the Dash code, it's also within that folder. You can even clone the repo and deploy your own version to Heroku (See the toplevel `README.md` for instructions).
+    """
+        ),
+    ]
+)
